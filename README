@@ -1,0 +1,62 @@
+pip install -r requirements.txt
+apt-get install sqlite3 libsqlite3-dev
+django-admin.py startproject main_app
+# Move the directory structure so that the manage.py comes to the top
+venv/bin/python manage.py startapp steam_trap
+venv/bin/python manage.py startapp clients
+
+
+venv/bin/python manage.py makemigrations
+venv/bin/python manage.py migrate
+venv/bin/python manage.py createsuperuser
+
+
+admin:admin
+http --form POST http://127.0.0.1:8000/clients/
+http --json POST http://127.0.0.1:8000/clients/
+
+
+# TODO: Fix the Directory path for CSS JS and other static files.
+
+pip freeze > requirements.txt
+
+python manage.py dumpdata <your_app> > temp_data.json
+python manage.py sqlclear <your_app> | python manage.py dbshell
+python manage.py syncdb
+python manage.py loaddata temp_data.json
+INSERT INTO django_migrations(app, name, applied) VALUES('air_leak', '0001_initial', '2015-10-08 09:22:56.823965');
+
+
+
+-----------------------
+
+There are python packages available to work with Excel files that will run on any Python platform and that do not require either Windows or Excel to be used. They are fast, reliable and open source:
+openpyxl
+
+The recommended package for reading and writing Excel 2010 files (ie: .xlsx)
+
+Download | Documentation | Bitbucket
+xlsxwriter
+
+An alternative package for writing data, formatting information and, in particular, charts in the Excel 2010 format (ie: .xlsx)
+Download | Documentation | GitHub
+
+xlrd
+
+This package is for reading data and formatting information from older Excel files (ie: .xls)
+
+Download | Documentation | GitHub
+xlwt
+
+This package is for writing data and formatting information to older Excel files (ie: .xls)
+
+Download | Documentation | Examples | GitHub
+xlutils
+
+This package collects utilities that require both xlrd and xlwt, including the ability to copy and modify or filter existing excel files.
+NB: In general, these use cases are now covered by openpyxl!
+
+Download | Documentation | GitHub
+
+The Mailing List / Discussion Group
+----------------------------
